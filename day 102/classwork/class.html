@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spicy delicious — Hero</title>
+  <style>
+    :root{
+      --bg: #e9fbfd;         /* left background */
+      --card: #ffffff;
+      --accent: #0b1320;
+      --muted: #6b7280;
+      --pill-bg: rgba(11,19,32,0.06);
+      --radius: 36px;
+      --gap: 28px;
+      --max-w: 1200px;
+      --shadow: 0 10px 30px rgba(2,6,23,0.08);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{height:100%; margin:0; background:transparent; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+    .stage{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; box-sizing:border-box}
+    .card{
+      width:100%;
+      max-width:var(--max-w);
+      display:grid;
+      grid-template-columns:1fr 520px;
+      gap:var(--gap);
+      background:linear-gradient(180deg, var(--bg) 0%, #f7ffff 100%);
+      border-radius:calc(var(--radius) + 4px);
+      padding:42px;
+      box-shadow: var(--shadow);
+      align-items:center;
+      overflow:hidden;
+    }
+
+    /* left content */
+    .left{
+      padding-right:12px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:var(--card);
+      padding:10px 14px;
+      border-radius:28px;
+      box-shadow:0 6px 18px rgba(2,6,23,0.05);
+      font-weight:600;
+      color:var(--accent);
+      width:max-content;
+    }
+    .badge svg{width:20px;height:20px;display:block}
+
+    h1{
+      margin:22px 0 14px 0;
+      font-size:56px;
+      line-height:1.02;
+      color:var(--accent);
+      letter-spacing:-1px;
+      font-weight:800;
+    }
+    .lead{
+      margin:0 0 22px 0;
+      color:var(--muted);
+      font-size:15px;
+      max-width:60ch;
+      line-height:1.6;
+    }
+
+    .pills{display:flex; gap:12px; margin-top:12px; flex-wrap:wrap}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      background:var(--pill-bg); padding:10px 14px; border-radius:999px;
+      color:var(--accent); font-weight:600; font-size:14px;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.25);
+    }
+    .pill svg{width:16px;height:16px}
+
+    .meta-row{display:flex; align-items:center; justify-content:space-between; margin-top:40px; gap:12px}
+    .author{font-weight:700; color:var(--accent)}
+    .date{color:var(--muted); font-size:14px}
+
+    .cta{
+      display:inline-flex; align-items:center; gap:12px; background:var(--accent); color:#fff;
+      padding:12px 22px; border-radius:14px; font-weight:700; border:none; cursor:pointer; box-shadow:0 8px 30px rgba(11,19,32,0.12);
+    }
+    .cta svg{width:18px;height:18px}
+
+    /* right image area */
+    .right{
+      position:relative;
+      border-radius:28px;
+      overflow:hidden;
+      height:420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg,#ffffff 0%, #fff 100%);
+    }
+    .right img{
+      height:100%;
+      width:100%;
+      object-fit:cover;
+      display:block;
+      transform-origin:center;
+      transition:transform .6s cubic-bezier(.2,.8,.2,1);
+    }
+    .right:hover img{ transform: scale(1.03); }
+
+    /* circular badge over image */
+    .round-badge{
+      position:absolute;
+      top:28px;
+      left:calc(50% - 12px); /* will be adjusted with transform */
+      transform: translateX(-50%);
+      width:84px;
+      height:84px;
+      border-radius:50%;
+      background:#0b1320;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      box-shadow:0 10px 30px rgba(2,6,23,0.12);
+      z-index:5;
+      font-size:11px;
+      letter-spacing:1px;
+    }
+    .round-badge .ring{ width:60px; height:60px; border-radius:50%; border:6px solid rgba(255,255,255,0.06); display:block}
+
+    /* responsive */
+    @media (max-width:1100px){
+      .card{ grid-template-columns:1fr 420px; padding:32px }
+      h1{ font-size:48px }
+    }
+    @media (max-width:860px){
+      .card{ grid-template-columns:1fr; }
+      .right{ order:-1; width:100%; height:300px; margin-bottom:14px; border-radius:20px }
+      .left{ padding-right:0 }
+      h1{ font-size:36px }
+    }
+    @media (max-width:420px){
+      .card{ padding:20px; border-radius:22px }
+      h1{ font-size:28px }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="card" role="region" aria-label="Recipe hero">
+      <div class="left">
+        <div class="badge" aria-hidden="true">
+          <!-- small icon (roll of paper) -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 7c0-2 3-4 7-4s7 2 7 4v10c0 2-3 4-7 4s-7-2-7-4V7z" stroke="#0b1320" stroke-width="1.1" fill="#fff" opacity="0.06"/>
+            <path d="M7 9h10" stroke="#0b1320" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          Hot Recipes
+        </div>
+
+        <h1>Spicy delicious<br>chicken wings</h1>
+
+        <p class="lead">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quick intro text that explains why this recipe is special.
+        </p>
+
+        <div class="pills" aria-hidden="true">
+          <div class="pill">
+            <!-- clock -->
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 7v6l4 2" stroke="#0b1320" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="8" stroke="#0b1320" stroke-width="1.6"/></svg>
+            30 Minutes
+          </div>
+
+          <div class="pill">
+            <!-- fork -->
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 2v6" stroke="#0b1320" stroke-width="1.6" stroke-linecap="round"/><path d="M15 2v6" stroke="#0b1320" stroke-width="1.6" stroke-linecap="round"/><path d="M6 14h12" stroke="#0b1320" stroke-width="1.6" stroke-linecap="round"/></svg>
+            Chicken
+          </div>
+        </div>
+
+        <div class="meta-row">
+          <div>
+            <div class="author">John Smith</div>
+            <div class="date">15 March 2022</div>
+          </div>
+
+          <button class="cta" id="viewBtn" aria-label="View Recipes">
+            View Recipes
+            <svg viewBox="0 0 24 24" fill="none" style="margin-left:6px"><path d="M5 12h14M13 5l7 7-7 7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="right" role="img" aria-label="Plate of spicy chicken wings">
+        <div class="round-badge" aria-hidden="true">
+          <div class="ring"></div>
+        </div>
+        <!-- Put your hero image in same folder named `hero.jpg` OR change src to your file name -->
+        <img id="heroImg" src="hero.jpg" alt="Spicy chicken wings">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // small interactions: open a demo modal or navigate to recipes (example)
+    document.getElementById('viewBtn').addEventListener('click', function(){
+      // simple demo action: scroll to bottom or show alert
+      alert('This would open the recipes list. Replace this handler with actual navigation.');
+    });
+
+    // if image missing, load fallback from unsplash (so file still shows)
+    const img = document.getElementById('heroImg');
+    img.addEventListener('error', ()=> {
+      img.src = 'https://images.unsplash.com/photo-1526403224730-3f5b8f68c27d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder';
+    });
+
+    // small parallax on mouse for a subtle depth
+    (function(){
+      const container = document.querySelector('.right');
+      const image = img;
+      container.addEventListener('mousemove', e => {
+        const rect = container.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        image.style.transform = `translate(${x*6}px, ${y*6}px) scale(1.02)`;
+      });
+      container.addEventListener('mouseleave', () => {
+        image.style.transform = '';
+      });
+    })();
+  </script>
+</body>
+</html>
