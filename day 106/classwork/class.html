@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Show / Hide Example</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; }
+    .controls { display: flex; gap: 8px; align-items:center; }
+    button { padding: 6px 12px; border-radius:6px; border:1px solid #ccc; cursor:pointer; }
+    #text { margin-left: 12px; font-weight: 600; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button id="showBtn">Show</button>
+    <button id="hideBtn">Hide</button>
+    <span id="text" class="hidden">hello world</span>
+  </div>
+
+  <script>
+    const showBtn = document.getElementById('showBtn');
+    const hideBtn = document.getElementById('hideBtn');
+    const textEl = document.getElementById('text');
+
+    showBtn.addEventListener('click', () => {
+      textEl.classList.remove('hidden');
+      // accessibility
+      textEl.setAttribute('aria-hidden', 'false');
+      showBtn.setAttribute('aria-pressed','true');
+      hideBtn.setAttribute('aria-pressed','false');
+    });
+
+    hideBtn.addEventListener('click', () => {
+      textEl.classList.add('hidden');
+      textEl.setAttribute('aria-hidden', 'true');
+      showBtn.setAttribute('aria-pressed','false');
+      hideBtn.setAttribute('aria-pressed','true');
+    });
+
+    // init
+    textEl.setAttribute('aria-hidden', 'true');
+    showBtn.setAttribute('aria-pressed','false');
+    hideBtn.setAttribute('aria-pressed','false');
+  </script>
+</body>
+</html>
+
+
