@@ -1,0 +1,1 @@
+//dgevandel videoshi gavnixilet proeqti da gaviget tu rogor shegvedzlo agvego proeqti react+teilwind css it da rogor gagvemartiva kodis wera. dgevandeli sakitxidan momaval proeqtebshi vapireb gamoviyeno mapit ro gadavuaret divebs sadac 4 divi dzalian mokle kodit shevqmenit.
